@@ -3,4 +3,5 @@
     <string name="foreground_service">Foreground service</string>
     <string name="intent_service">Intent service</string>
     <string name="enter_a_numeric_value">Enter a numeric value</string>
+    <string name="stop_foreground">Stop Foreground</string>
 </resources>

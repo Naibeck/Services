@@ -24,6 +24,12 @@
             android:text="@string/foreground_service" />
 
         <Button
+            android:id="@+id/stopForegroundButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/stop_foreground" />
+
+        <Button
             android:id="@+id/intentServiceButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

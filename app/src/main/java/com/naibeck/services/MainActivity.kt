@@ -3,6 +3,7 @@ package com.naibeck.services
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import com.naibeck.services.TimeCounterService.Companion.COUNTER
 import com.naibeck.services.databinding.ActivityMainBinding
@@ -13,6 +14,12 @@ class MainActivity : AppCompatActivity() {
         val binding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
         binding.foregroundServiceButton.setOnClickListener { launchService(Services.ForegroundService, binding.messageToService.text.toString().toInt()) }
         binding.intentServiceButton.setOnClickListener { launchService(Services.IntentService, binding.messageToService.text.toString().toInt()) }
+        binding.stopForegroundButton.setOnClickListener { stopForegroundService() }
+    }
+
+    private fun stopForegroundService() {
+        val intent = Intent(this, TimeCounterService::class.java)
+        stopService(intent)
     }
 
     private fun launchService(serviceType: Services, value: Int) {
@@ -29,7 +36,7 @@ class MainActivity : AppCompatActivity() {
     private fun launchForegroundService(value: Int) {
         val intent = Intent(this, TimeCounterService::class.java)
         intent.putExtra(COUNTER, value)
-        startService(intent)
+        ContextCompat.startForegroundService(this, intent)
     }
 }
 

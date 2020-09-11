@@ -5,11 +5,15 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.os.Build
 import androidx.core.app.NotificationManagerCompat
+import timber.log.Timber
 
 class ServicesApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         createNotificationChannels()
+        if (BuildConfig.DEBUG) {
+            Timber.plant(Timber.DebugTree())
+        }
     }
 
     private fun createNotificationChannels() {
