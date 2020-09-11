@@ -1,8 +1,10 @@
 package com.naibeck.services
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
+import com.naibeck.services.TimeCounterService.Companion.COUNTER
 import com.naibeck.services.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -25,7 +27,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun launchForegroundService(value: Int) {
-        TODO("Not yet implemented")
+        val intent = Intent(this, TimeCounterService::class.java)
+        intent.putExtra(COUNTER, value)
+        startService(intent)
     }
 }
 
