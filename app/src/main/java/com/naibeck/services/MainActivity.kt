@@ -10,7 +10,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
         binding.foregroundServiceButton.setOnClickListener { launchService(Services.ForegroundService, binding.messageToService.text.toString().toInt()) }
-        binding.foregroundServiceButton.setOnClickListener { launchService(Services.IntentService, binding.messageToService.text.toString().toInt()) }
+        binding.intentServiceButton.setOnClickListener { launchService(Services.IntentService, binding.messageToService.text.toString().toInt()) }
     }
 
     private fun launchService(serviceType: Services, value: Int) {
