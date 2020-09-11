@@ -7,10 +7,12 @@ import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import com.naibeck.services.TimeCounterService.Companion.COUNTER
 import com.naibeck.services.databinding.ActivityMainBinding
+import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Timber.d("Hola")
         val binding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
         binding.foregroundServiceButton.setOnClickListener { launchService(Services.ForegroundService, binding.messageToService.text.toString().toInt()) }
         binding.intentServiceButton.setOnClickListener { launchService(Services.IntentService, binding.messageToService.text.toString().toInt()) }
@@ -30,7 +32,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun launchIntentService(value: Int) {
-        TODO("Not yet implemented")
+        TaskCompleterIntentService.enqueueMethod(this, Intent(this, TaskCompleterIntentService::class.java))
     }
 
     private fun launchForegroundService(value: Int) {
